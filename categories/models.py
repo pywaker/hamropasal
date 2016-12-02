@@ -4,3 +4,6 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=32)
     description = models.CharField(max_length=120)
+
+    def __repr__(self):
+        return self.name
