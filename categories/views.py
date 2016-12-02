@@ -6,7 +6,7 @@ from .models import Category
 
 
 # Create your views here.
-def get_categories(request):
+def get_categories_old(request):
     # def get_body(arg):
     #     return 'Hello Categories'
     # Response = namedtuple('Response',
@@ -22,3 +22,12 @@ def get_categories(request):
         html += '<li>' + item.name + '</li>'
     html += "</ul></body></html>"
     return HttpResponse(html)
+
+
+def get_categories(request):
+    items = Category.objects.all()
+    return render(
+      request,
+      'get_categories.html',
+      {'items': items}
+   )
