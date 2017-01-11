@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block main %}
+    <div class="container">
+
+      {% include 'navbar.html' %}
+
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Marketing stuff!</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+      <!--<div class="row">-->
+        <!--{% for category in categories %}-->
+        <!--{% if category.name.strip %}-->
+        <!--<div class="col-md-3">-->
+          <!--<div class="panel panel-default">-->
+            <!--<div class="panel-body">-->
+              <!--<a href="{% url 'products' category.id %}">{{ category.name }}</a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--{% endif %}-->
+        <!--{% endfor %}-->
+      <!--</div>-->
+      
+      <div class="dropdown"> 
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Dropdown <span class="caret"></span> </button> 
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+          <li><a href="#">Action</a></li> 
+          <li><a href="#">Another action</a></li> 
+          <li><a href="#">Something else here</a></li> 
+          <li role="separator" class="divider"></li> 
+          <li><a href="#">Separated link</a></li>
+        </ul> 
+      </div>
+
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+{% endblock %}

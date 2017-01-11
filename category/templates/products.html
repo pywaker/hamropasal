@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block main %}
+    <div class="container">
+
+      {% include 'navbar.html' %}
+
+      <!-- Example row of columns -->
+      <h1>{{ category.name }}</h1>
+      <div class="row">
+        {% for product in category.product_set.all %}
+        {% if product.name.strip %}
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <a href="/details/{{ product.id }}">{{ product.name }}</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{
+  "name": "hamropasalv2",
+  "authors": [
+    "Diwaker Ghimire <idwaker@gmail.com>"
+  ],
+  "description": "our project",
+  "main": "static/main.js",
+  "keywords": [
+    "academy"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
