@@ -8,8 +8,9 @@ from .models import Category
 def home_page(request):
     # https://docs.djangoproject.com/en/1.10/topics/db/queries/
     #return HttpResponse('<h1>Hello World</h1>')
-    categories = Category.objects.filter(name__isnull=False)
-    print(categories)
+    categories = Category.objects.filter(name__isnull=False, 
+                                         category__isnull=True)
+    print(categories.query)
     return render(request, 'homepage.html', {'categories':categories})
 
 
