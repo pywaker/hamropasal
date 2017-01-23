@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Category
+from .forms import ContactForm
 
 
 # Create your views here.
@@ -17,3 +18,9 @@ def home_page(request):
 def products(request, category_id):
     category = Category.objects.get(pk=category_id)
     return render(request, 'products.html', {'category': category})
+
+
+def contact(request):
+    print(request.POST.get('fullname'))
+    form = ContactForm(request.POST)
+    return render(request, 'contact.html', {'form': form})

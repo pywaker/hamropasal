@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from category.views import home_page, products
+#from category.views import home_page, products, contact
+
+import category.views as cviews
 
 
 urlpatterns = [
-    url(r'^$', home_page, name='homepage'),
-    url(r'^category/(?P<category_id>[0-9]+)', products, name='products'),
+    url(r'^$', cviews.home_page, name='homepage'),
+    url(r'^category/(?P<category_id>[0-9]+)', cviews.products, name='products'),
+    url(r'^contact/', cviews.contact, name='contact'),
     url(r'^admin/', admin.site.urls),
 ]
