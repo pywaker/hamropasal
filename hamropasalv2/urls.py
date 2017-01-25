@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^$', cviews.home_page, name='homepage'),
     url(r'^category/(?P<category_id>[0-9]+)', cviews.products, name='products'),
     url(r'^contact/', cviews.contact, name='contact'),
+    url(r'^category/add', cviews.add_category, name='add_category'),
     url(r'^admin/', admin.site.urls),
 ]

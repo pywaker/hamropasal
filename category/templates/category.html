@@ -3,7 +3,7 @@
 {% block main %}
 <div class="col-md-6 col-xs-3">
 <form name="contactform" action="" method="post" class="form-horizontal" role="form">
-    <h1>Contact Us</h1>
+    <h1>Add New Category</h1>
     {% csrf_token %}
     <!--{# {{ form.as_p }} #}-->
     {% for field in form %}
@@ -12,14 +12,7 @@
             {{ field }}
         </div>
     {% endfor %}
-    <!--<label>Fullname</label>-->
-    <!--<input type="text" name="fullname" required/><br/>-->
-    <!--<label>Remarks</label>-->
-    <!--<textarea name="remarks"></textarea><br/>-->
-    <input class="btn btn-primary" type="submit" name="submit" value="Submit"/>
-    <!--<button type="submit">Submit</button>-->
+    <input class="btn btn-primary" type="submit" name="submit" value="Save"/>
 </form>
-{{ form.data.remarks|safe }}
-{{ form.cleaned_data.remarks }}
 </div>
 {% endblock %}

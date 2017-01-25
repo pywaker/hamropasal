@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Category
-from .forms import ContactForm
+from .forms import ContactForm, CategoryForm
 
 
 # Create your views here.
@@ -22,5 +22,21 @@ def products(request, category_id):
 
 def contact(request):
     print(request.POST.get('fullname'))
-    form = ContactForm(request.POST)
+    form = ContactForm(request.POST or None)
+    print(form.is_valid(), form.data, form.cleaned_data)
     return render(request, 'contact.html', {'form': form})
+
+
+def add_category(request):
+    form = CategoryForm(request.POST or None)
+    form.fields['category'].choices = [(c.id, c.name) for c in Category.objects.all()]
+    if form.is_valid():
+        name = form.cleaned_data['name']
+        description = form.cleaned_data['description']
+        cat = Category(
+            name=name,
+            description=description
+        )
+        cat.category_id = form.cleaned_data['category']
+        cat.save()
+    return render(request, 'category.html', {'form': form})
