@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
+from django.views.generic.edit import FormView
 from django.contrib import messages
 from .models import Category
-from .forms import ContactForm, CategoryForm
+from .forms import ContactForm, CategoryForm, ProductForm
 
 
 # Create your views here.
@@ -76,3 +77,14 @@ class CategoryAddView(View):
         )
         cat.category_id = form.cleaned_data['category']
         return cat.save()        
+
+
+class ProductAddView(FormView):
+    template_name = 'productform.html'
+    form_class = ProductForm
+    success_url = '/products/add'
+    
+    def form_valid(self, form):
+        # save to database
+        print(form)
+        return super().form_valid(form)

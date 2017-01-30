@@ -3,3 +3,5 @@ dependencies:
   - python=3.5
   - django=1.10
   - psycopg2=2.6
+  - pip:
+    - django-debug-toolbar

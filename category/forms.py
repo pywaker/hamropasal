@@ -1,6 +1,6 @@
 
-from django.forms import Form, CharField, Textarea, TextInput, ChoiceField
-
+from django.forms import Form, CharField, Textarea, TextInput, ChoiceField, ModelForm
+from .models import Product
 
 class ContactForm(Form):
     fullname = CharField(max_length=32, 
@@ -14,3 +14,9 @@ class CategoryForm(Form):
     description = CharField(widget=Textarea(attrs={'class': 'form-control'}),
                             required=False)
     category = ChoiceField(required=False)
+
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ('name', 'category',)        
