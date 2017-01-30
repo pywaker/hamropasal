@@ -16,14 +16,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 #from category.views import home_page, products, contact
+from django.views.generic import TemplateView
 
 import category.views as cviews
 
 
 urlpatterns = [
     url(r'^$', cviews.home_page, name='homepage'),
+    url(r'^about/', TemplateView.as_view(template_name='about.html'), name='about'),
+    url(r'^category/', cviews.CategoryAddView.as_view(), name='category'),
     url(r'^category/(?P<category_id>[0-9]+)', cviews.products, name='products'),
     url(r'^contact/', cviews.contact, name='contact'),
-    url(r'^category/add', cviews.add_category, name='add_category'),
+    #url(r'^category/add', cviews.add_category, name='add_category'),
     url(r'^admin/', admin.site.urls),
 ]

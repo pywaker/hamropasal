@@ -20,6 +20,14 @@
     <![endif]-->
   </head>
   <body>
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} alert alert-success"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
     {% block main %}{% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
