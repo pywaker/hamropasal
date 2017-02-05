@@ -4,4 +4,5 @@ dependencies:
   - django=1.10
   - psycopg2=2.6
   - pip:
+    - djangorestframework
     - django-debug-toolbar

@@ -15,33 +15,23 @@
         <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
       </div>
 
-      <!-- Example row of columns -->
-      <!--<div class="row">-->
-        <!--{% for category in categories %}-->
-        <!--{% if category.name.strip %}-->
-        <!--<div class="col-md-3">-->
-          <!--<div class="panel panel-default">-->
-            <!--<div class="panel-body">-->
-              <!--<a href="{% url 'products' category.id %}">{{ category.name }}</a>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--{% endif %}-->
-        <!--{% endfor %}-->
-      <!--</div>-->
       
-      {% for category in categories %}
-      <div class="dropdown"> 
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ category.name }} <span class="caret"{}></span> </button>
-        {% if category.children.count %}
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          {% for cat in category.children.all %}
-          <li><a href="{% url 'products' cat.id %}">{{ cat.name }}</a></li>
-          {% endfor %}
-        </ul> 
-        {% endif %}
-      </div>
-      {% endfor %}
+      <!--{% for category in categories %}-->
+      <!--<div class="dropdown"> -->
+        <!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ category.name }} <span class="caret"{}></span> </button>-->
+        <!--{% if category.children.count %}-->
+        <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+          <!--{% for cat in category.children.all %}-->
+          <!--<li><a href="">{{ cat.name }}</a></li>-->
+          <!--{% endfor %}-->
+        <!--</ul> -->
+        <!--{% endif %}-->
+      <!--</div>-->
+      <!--{% endfor %}-->
+      
+      <ul id="products">
+        <li> All Products</li>
+      </ul>
 
 
       <!-- Site footer -->
@@ -55,3 +45,20 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 {% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+    $.get('/products')
+    .done(function(data) {
+      $.each(data, function(idx, item) {
+        var _html = '<li><strong>' + item.name + '</strong>';
+        _html += ' (<i>' + item.created_on + '</i>)';
+        $('#products').append(_html);
+      });
+    }).fail(function(err) {
+      $('#products').html($('<li>No Result Found</li>'));
+    });
+    </script>
+    
+    {% endblock %}
