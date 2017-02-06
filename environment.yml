@@ -6,3 +6,4 @@ dependencies:
   - pip:
     - djangorestframework
     - django-debug-toolbar
+    - django-angular
